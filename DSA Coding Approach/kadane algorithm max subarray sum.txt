@@ -46,11 +46,7 @@ But if this case is not explicitly mentioned we will not consider this case.
 Note: For a better understanding of intuition, please watch the video at the bottom of the page.
 
 Code
-C++
-Java
-Python
-Javascript
-Copy
+
 
 #include <bits/stdc++.h>
 using namespace std;

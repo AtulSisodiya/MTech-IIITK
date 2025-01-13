@@ -1,0 +1,72 @@
+The Tortoise and Hare Algorithm, also known as Floyd's Cycle Detection Algorithm, is a pointer-based approach to solving problems in linked lists. It is called "Tortoise and Hare" because it uses two pointers that move through the linked list at different speeds (one slower, like a tortoise, and one faster, like a hare).
+
+Applications of Tortoise and Hare:
+
+1. Cycle Detection:
+
+Determine if a linked list contains a cycle.
+
+2.Cycle Length:
+
+Calculate the length of the cycle in a circular linked list.
+
+3.Find Cycle Entry Point:
+
+Identify the starting node of a cycle in a linked list.
+
+4.Finding Middle of a Linked List:
+
+Move the slow pointer one step at a time and the fast pointer two steps at a time. When the fast pointer reaches the end, the slow pointer will be at the middle.
+
+5.Length of a Linked List (in Circular Lists):
+
+In circular linked lists, this algorithm can help compute the total length of the list by finding the cycle length and adding it to the nodes outside the cycle.
+
+/**
+ * Definition of linked list:
+ *
+ * class Node {
+ * public:
+ *      int data;
+ *      Node *next;
+ *
+ *      Node(int data) {
+ *          this->data = data;
+ *          this->next = NULL;
+ *      }
+ * };
+ *
+ *************************************************************************/
+int countLength(Node* slow){
+    Node* curr = slow;
+    int cnt=1;
+
+    while(curr->next!=slow){
+        curr=curr->next;
+        cnt++;
+    }
+    return cnt;
+}
+int lengthOfLoop(Node *head) {
+    Node* slow=head;
+    Node* fast=head;
+
+    while(fast!=nullptr && fast->next!=nullptr){
+        slow=slow->next;
+        fast=fast->next->next;
+
+
+        if(slow==fast){
+            return countLength(slow);
+        }
+    }    
+    return 0;      // Write your code here
+}
+
+
+
+
+
+6.Determine Palindrome in Linked List:
+
+Use the middle-finding concept to split the list into two halves, reverse one half, and compare them to check if the list is a palindrome
