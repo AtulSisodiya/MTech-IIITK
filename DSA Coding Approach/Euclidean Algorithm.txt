@@ -1,0 +1,268 @@
+The Euclidean Algorithm is an efficient method for finding the Greatest Common Divisor (GCD), also known as the Highest Common Factor (HCF), of two numbers. It is based on the principle that the GCD of two numbers also divides their difference.
+
+Euclidean Algorithm Overview:
+Given two numbers 
+𝑎
+a and 
+𝑏
+b (where 
+𝑎
+≥
+𝑏
+a≥b), the algorithm follows these steps:
+
+Divide 
+𝑎
+a by 
+𝑏
+b and get the remainder, say 
+𝑟
+r.
+
+𝑎
+=
+𝑏
+×
+𝑞
++
+𝑟
+a=b×q+r
+where 
+𝑞
+q is the quotient and 
+𝑟
+r is the remainder.
+
+Replace 
+𝑎
+a with 
+𝑏
+b and 
+𝑏
+b with 
+𝑟
+r (the remainder).
+
+Repeat the process until 
+𝑏
+=
+0
+b=0. When this happens, the value of 
+𝑎
+a will be the GCD of the original two numbers.
+
+Steps:
+Start with two numbers, 
+𝑎
+a and 
+𝑏
+b.
+Perform the division 
+𝑎
+÷
+𝑏
+a÷b, get the remainder 
+𝑟
+r.
+Replace 
+𝑎
+a by 
+𝑏
+b and 
+𝑏
+b by 
+𝑟
+r.
+Continue the process until 
+𝑏
+=
+0
+b=0. The last non-zero remainder is the GCD of 
+𝑎
+a and 
+𝑏
+b.
+Mathematical Explanation:
+Let 
+𝑎
+a and 
+𝑏
+b be two integers. The Euclidean algorithm relies on the fact that:
+
+gcd
+(
+𝑎
+,
+𝑏
+)
+=
+gcd
+(
+𝑏
+,
+𝑎
+m
+o
+d
+ 
+ 
+𝑏
+)
+gcd(a,b)=gcd(b,amodb)
+where 
+𝑎
+m
+o
+d
+ 
+ 
+𝑏
+amodb is the remainder when 
+𝑎
+a is divided by 
+𝑏
+b.
+
+Example of Euclidean Algorithm:
+Let's calculate the GCD of 
+𝑎
+=
+48
+a=48 and 
+𝑏
+=
+18
+b=18:
+
+First, divide 48 by 18:
+
+48
+=
+18
+×
+2
++
+12
+48=18×2+12
+So, the remainder 
+𝑟
+=
+12
+r=12.
+
+Now, replace 
+𝑎
+=
+18
+a=18 and 
+𝑏
+=
+12
+b=12. Divide 18 by 12:
+
+18
+=
+12
+×
+1
++
+6
+18=12×1+6
+So, the remainder 
+𝑟
+=
+6
+r=6.
+
+Replace 
+𝑎
+=
+12
+a=12 and 
+𝑏
+=
+6
+b=6. Divide 12 by 6:
+
+12
+=
+6
+×
+2
++
+0
+12=6×2+0
+The remainder is 0, so we stop here.
+
+The GCD of 48 and 18 is the last non-zero remainder, which is 6.
+
+Code Implementation:
+Here's a Python code implementation of the Euclidean Algorithm for finding the GCD of two numbers:
+
+python
+Copy
+Edit
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b  # Replace a with b and b with remainder of a divided by b
+    return a
+
+# Test the function
+a = 48
+b = 18
+print(f"The GCD of {a} and {b} is {gcd(a, b)}")
+Why it Works:
+The Euclidean Algorithm works because of the following properties:
+
+Divisibility Property:
+If 
+𝑟
+=
+𝑎
+m
+o
+d
+ 
+ 
+𝑏
+r=amodb, then 
+gcd
+(
+𝑎
+,
+𝑏
+)
+=
+gcd
+(
+𝑏
+,
+𝑟
+)
+gcd(a,b)=gcd(b,r).
+Reduction Property:
+The size of the problem reduces with each division, making it efficient.
+Time Complexity:
+The time complexity of the Euclidean algorithm is 
+𝑂
+(
+log
+⁡
+(
+min
+⁡
+(
+𝑎
+,
+𝑏
+)
+)
+)
+O(log(min(a,b))), where 
+𝑎
+a and 
+𝑏
+b are the input numbers. This is because the number of steps grows logarithmically with respect to the smaller of the two numbers.
+
+Conclusion:
+The Euclidean Algorithm is an efficient and fast method for computing the GCD (HCF) of two numbers. By using division and remainders, the algorithm simplifies the problem step by step until the result is found.

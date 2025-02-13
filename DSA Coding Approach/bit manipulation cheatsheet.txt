@@ -1,0 +1,76 @@
+Bit Manipulation Cheatsheet (C++)
+Operators
+Bitwise And --> &
+
+Bitwise Or --> |
+
+Bitwise xor --> ^
+
+Bitwise Not --> ~
+
+Bitwise Left Shift --> <<
+
+Bitwise Right Shift --> >>
+
+Arithmetic Operations
+y = x << 2 Same as writing y = x * 2 ** 2
+
+y = x >> 2 Same as writing y = x / 2 ** 2
+
+(x & 1) Checks if x is odd
+
+(x & 1) ^ 1 Checks if x is even
+
+x>0 && !(x&x-1) Checks if x is power of 2
+
+x ^ y Checks if x == y
+
+Bitwise Operations
+x & (1 << n) Checks if nth bit is set
+
+(x >> n) & 1 Checks if nth bit is set
+
+x = (x ^ (1 << n)) Toggles the nth bit of x
+
+x = (x | (1 << n)) Set the nth bit of x
+
+x = (x & ~(1 << n)) Unset the nth bit of x
+
+x = x & (x - 1) Turn off the rightmost 1 bit
+
+x = x & -x Isolate the rightmost 1 bit
+
+x = x | (x - 1) Right propagate rightmost 1 bit
+
+x = x | (x + 1) Turn on the rightmost 0 bit
+
+x = ~x & (x + 1) Isolate the rightmost 0 bit
+
+
+
+Useful Bitwise Tricks for Problem Solving
+Loop until i == 0
+	for (int i = n; ~i; i--) {
+		// do something
+	}
+
+
+Number of set bits in a number n
+	int numberOfSetBits = 0;
+	while (n) {
+		numberOfSetBits += (n & 1);
+		n >>= 1;
+	}
+	cout << numberOfSetBits << endl;
+
+
+Some useful G++ stl functions
+__builtin_popcount(n) counts the number of bits in n
+
+__builtin_clz(n) counts the number of leading zeros in n
+
+__builtin_ctz(n) counts the number of trailing zeros in n
+
+__builtin_parity(n) checks the parity of a number (odd number of set bits)
+
+Info: To make these work for long long data type, just put ll in the end of the functions, e.g. __builtin_popcountll(n) will return the number of set bits in n of long long data type
